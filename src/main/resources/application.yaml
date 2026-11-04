@@ -1,3 +1,7 @@
 spring:
   application:
     name: trabalho01
+  profiles:
+    active: test
+  jpa:
+    open-in-view: true
