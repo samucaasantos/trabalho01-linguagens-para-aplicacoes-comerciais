@@ -1,5 +1,6 @@
 package com.linguagenscomerciais.trabalho01.models;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.linguagenscomerciais.trabalho01.models.enums.Priority;
 import com.linguagenscomerciais.trabalho01.models.enums.Status;
 import jakarta.persistence.*;
@@ -18,19 +19,24 @@ public class SupportTicket implements Serializable {
     private Long id;
 
     @Setter
+    @JsonAlias({"titulo", "título"})
     private String title;
 
     @Setter
+    @JsonAlias("solicitante")
     private String requester;
 
     @Setter
+    @JsonAlias({"setor", "departamento"})
     private String department;
 
     @Setter
+    @JsonAlias("prioridade")
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
     @Setter
+    @JsonAlias("estado")
     @Enumerated(EnumType.STRING)
     private Status status;
 

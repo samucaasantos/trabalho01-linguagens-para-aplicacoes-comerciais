@@ -41,7 +41,7 @@ public class SupportTicketService {
             Priority priority = Priority.valueOf(level.toUpperCase());
             return repository.findByPriority(priority);
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Prioridade inválida: " + level);
+            throw new IllegalArgumentException("Prioridade inválida: " + level);
         }
 
     }
@@ -54,7 +54,7 @@ public class SupportTicketService {
         return repository.findByPriorityAndStatusNot(Priority.ALTA, Status.RESOLVIDO);
     }
 
-    public Map<String, Long> getTicketsSummary(){
+    public Map<String, Long> getTicketsSummary() {
         Map<String, Long> summary = new LinkedHashMap<>();
         long opened = repository.countByStatus(Status.ABERTO);
         long solving = repository.countByStatus(Status.EM_ANDAMENTO);
